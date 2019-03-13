@@ -20,7 +20,8 @@
         }
     },
     "require" : {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "phpunit/phpunit": "8.0.4"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^5.4",
