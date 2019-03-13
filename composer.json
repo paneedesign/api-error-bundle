@@ -2,12 +2,6 @@
     "name": "paneedesign/api-error-bundle",
     "description": "A bundle that provides tools for easy and consistent API error handling",
     "type": "symfony-bundle",
-    "require-dev": {
-        "symplify/easy-coding-standard": "^5.4",
-        "squizlabs/php_codesniffer": "^3.4",
-        "phpmd/phpmd": "^2.6",
-        "friendsofphp/php-cs-fixer": "^2.14"
-    },
     "license": "proprietary",
     "authors": [
         {
@@ -15,5 +9,23 @@
             "email": "patrick@paneedesign.com"
         }
     ],
-    "require": {}
+    "autoload" : {
+        "psr-4" : {
+            "PaneeDesign\\ApiErrorBundle\\": "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "PaneeDesign\\ApiErrorBundle\\Tests\\": "tests/"
+        }
+    },
+    "require" : {
+        "php": ">=7.2"
+    },
+    "require-dev": {
+        "symplify/easy-coding-standard": "^5.4",
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpmd/phpmd": "^2.6",
+        "friendsofphp/php-cs-fixer": "^2.14"
+    }
 }
