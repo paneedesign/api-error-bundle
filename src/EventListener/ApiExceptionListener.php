@@ -9,26 +9,25 @@ declare(strict_types=1);
 
 namespace PaneeDesign\ApiErrorBundle\EventListener;
 
-use PaneeDesign\ApiErrorBundle\Discriminator\DiscriminatorStrategyInterface;
+use PaneeDesign\ApiErrorBundle\Discrimination\DiscriminationStrategyInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
 final class ApiExceptionListener
 {
     /**
-     * @var DiscriminatorStrategyInterface
+     * @var DiscriminationStrategyInterface
      */
     private $discriminator;
 
     /**
      * ApiExceptionListener constructor.
      *
-     * @param DiscriminatorStrategyInterface $discriminator
+     * @param DiscriminationStrategyInterface $discriminator
      */
-    public function __construct(DiscriminatorStrategyInterface $discriminator)
+    public function __construct(DiscriminationStrategyInterface $discriminator)
     {
         $this->discriminator = $discriminator;
     }
-
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {

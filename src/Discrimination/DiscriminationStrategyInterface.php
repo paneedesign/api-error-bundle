@@ -7,11 +7,11 @@ declare(strict_types=1);
  * Time: 13.12
  */
 
-namespace PaneeDesign\ApiErrorBundle\Discriminator;
+namespace PaneeDesign\ApiErrorBundle\Discrimination;
 
 use Symfony\Component\HttpFoundation\Request;
 
-interface DiscriminatorStrategyInterface
+interface DiscriminationStrategyInterface
 {
     public function inApiContext(Request $request): bool;
 }

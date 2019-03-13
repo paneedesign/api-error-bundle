@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace PaneeDesign\ApiErrorBundle\Tests\Discriminator;
 
-use PaneeDesign\ApiErrorBundle\Discriminator\DefaultDiscriminatorStrategy;
+use PaneeDesign\ApiErrorBundle\Discrimination\DefaultDiscriminationStrategy;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,7 +17,7 @@ class DefaultDiscriminatorStrategyTest extends TestCase
 {
     public function testInApiContext()
     {
-        $discriminator = new DefaultDiscriminatorStrategy();
+        $discriminator = new DefaultDiscriminationStrategy();
 
         $request = self::createConfiguredMock(Request::class, [
             'getPathInfo' => '/api/an-api-andpoint'
@@ -28,7 +28,7 @@ class DefaultDiscriminatorStrategyTest extends TestCase
 
     public function testNotInApiContext()
     {
-        $discriminator = new DefaultDiscriminatorStrategy();
+        $discriminator = new DefaultDiscriminationStrategy();
 
         $request = self::createConfiguredMock(Request::class, [
             'getPathInfo' => '/user/not-an-api-andpoint'
