@@ -19,14 +19,17 @@
             "PaneeDesign\\ApiErrorBundle\\Tests\\": "tests/"
         }
     },
+    "minimum-stability": "beta",
     "require" : {
         "php": ">=7.2",
-        "phpunit/phpunit": "8.0.4"
+        "phpunit/phpunit": "8.0.4",
+        "symfony/dependency-injection": "^4.2"
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^5.4",
         "squizlabs/php_codesniffer": "^3.4",
         "phpmd/phpmd": "^2.6",
-        "friendsofphp/php-cs-fixer": "^2.14"
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "symfony/framework-bundle": "^4.2"
     }
 }
