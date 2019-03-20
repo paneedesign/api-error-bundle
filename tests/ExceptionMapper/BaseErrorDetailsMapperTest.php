@@ -13,24 +13,18 @@ use PaneeDesign\ApiErrorBundle\ExceptionMapper\BaseErrorDetailsMapper;
 use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
 use PHPUnit\Framework\TestCase;
 
-class BaseExceptionMapperTest extends TestCase
+class BaseErrorDetailsMapperTest extends TestCase
 {
-    /**
-     * @throws \ReflectionException
-     */
     public function testMapping()
     {
-        $mappingStrategy = self::createConfiguredMock(MappingStrategyInterface::class, [
-            'map' => 'A_BAD_ERROR'
-        ]);
-
         $mapper = new BaseErrorDetailsMapper([
             'A_BAD_ERROR' => [
                 'title' => 'A bad error',
                 'statusCode' => 404
             ]
-        ], $mappingStrategy);
+        ]);
 
-        self::assertEquals('type', $mapper->type());
+        self::assertEquals(404, $mapper->statusCode('A_BAD_ERROR'));
+        self::assertEquals('A bad error', $mapper->title('A_BAD_ERROR'));
     }
 }

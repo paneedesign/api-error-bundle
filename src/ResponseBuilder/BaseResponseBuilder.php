@@ -39,6 +39,26 @@ final class BaseResponseBuilder implements ResponseBuilderInterface
      */
     private $errorDetails;
 
+    /**
+     * BaseResponseBuilder constructor.
+     *
+     * @param bool $debug
+     * @param MappingStrategyInterface $mapper
+     * @param AbstractParametersExtractor $parameterExtractor
+     * @param ErrorDetailsMapperInterface $errorDetails
+     */
+    public function __construct(
+        bool $debug,
+        MappingStrategyInterface $mapper,
+        AbstractParametersExtractor $parameterExtractor,
+        ErrorDetailsMapperInterface $errorDetails
+    ) {
+        $this->debug              = $debug;
+        $this->mapper             = $mapper;
+        $this->parameterExtractor = $parameterExtractor;
+        $this->errorDetails       = $errorDetails;
+    }
+
 
     public function build(\Exception $exception): Response
     {

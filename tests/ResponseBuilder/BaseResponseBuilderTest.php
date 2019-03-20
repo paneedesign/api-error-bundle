@@ -9,25 +9,57 @@ declare(strict_types=1);
 
 namespace PaneeDesign\ApiErrorBundle\Tests\ResponseBuilder;
 
+use PaneeDesign\ApiErrorBundle\ExceptionMapper\AbstractParametersExtractor;
 use PaneeDesign\ApiErrorBundle\ExceptionMapper\ErrorDetailsMapperInterface;
+use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
 use PaneeDesign\ApiErrorBundle\ResponseBuilder\BaseResponseBuilder;
 use PHPUnit\Framework\TestCase;
 
 class BaseResponseBuilderTest extends TestCase
 {
-    public function testBuild()
+    /**
+     * @var MappingStrategyInterface
+     */
+    private $mappingStrategy;
+
+    /**
+     * @var AbstractParametersExtractor
+     */
+    private $parametersExtractor;
+
+    /**
+     * @var ErrorDetailsMapperInterface
+     */
+    private $exceptionMapper;
+
+    protected function setUp(): void
     {
-        $exceptionMapper = self::createConfiguredMock(ErrorDetailsMapperInterface::class, [
-            'type' => $type = 'UNKNOWN_TYPE',
-            'title' => $title = 'Unknown type',
-            'statusCode' => $statusCode = 500,
+        $this->mappingStrategy = self::createConfiguredMock(MappingStrategyInterface::class, [
+            'map' => 'A_BAD_ERROR'
         ]);
 
-        $builder = new BaseResponseBuilder($exceptionMapper, false);
+        $this->parametersExtractor = self::createConfiguredMock(AbstractParametersExtractor::class, [
+            'processException' => null
+        ]);
+
+        $this->exceptionMapper = self::createConfiguredMock(ErrorDetailsMapperInterface::class, array(
+            'title' => 'A bad error',
+            'statusCode' => 500,
+        ));
+    }
+
+    public function testBuild()
+    {
+        $builder = new BaseResponseBuilder(
+            false,
+            $this->mappingStrategy,
+            $this->parametersExtractor,
+            $this->exceptionMapper
+        );
 
         $response = $builder->build(new \InvalidArgumentException('A message'));
 
-        self::assertEquals($statusCode, $response->getStatusCode());
+        self::assertEquals(500, $response->getStatusCode());
         self::assertTrue(
             $response->headers->contains('Content-type', 'application/problem+json'),
             'Header type : ' . $response->headers->get('Content-type')
@@ -40,23 +72,23 @@ class BaseResponseBuilderTest extends TestCase
         self::assertArrayHasKey('type', $decodedContent);
         self::assertArrayNotHasKey('exception', $decodedContent);
         self::assertArrayNotHasKey('params', $decodedContent);
-        self::assertEquals($type, $decodedContent['type']);
-        self::assertEquals($title, $decodedContent['title']);
+        self::assertEquals('A_BAD_ERROR', $decodedContent['type']);
+        self::assertEquals('A bad error', $decodedContent['title']);
     }
 
     public function testBuildParametric()
     {
-        $exceptionMapper = self::createConfiguredMock(ErrorDetailsMapperInterface::class, [
-            'type' => 'SOME_PARAMETRIC_TYPE',
-            'title' => 'Some parametric type',
-            'statusCode' => 404,
-            'parameters' => [
-                'ONE' => 'Parameter #1',
-                'TWO' => 'Parameter #2',
-            ]
-        ]);
-
-        $builder = new BaseResponseBuilder($exceptionMapper, true);
+        $builder = new BaseResponseBuilder(
+            true,
+            $this->mappingStrategy,
+            self::createConfiguredMock(AbstractParametersExtractor::class, [
+                'processException' =>[
+                    'ONE' => 'Parameter #1',
+                    'TWO' => 'Parameter #2',
+                ]
+            ]),
+            $this->exceptionMapper
+        );
 
         $response = $builder->build(new \InvalidArgumentException('A message'));
 
