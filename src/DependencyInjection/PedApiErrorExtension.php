@@ -28,5 +28,12 @@ final class PedApiErrorExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config/services'));
         $loader->load('services.yml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+//        $definition = $container->getDefinition('acme.social.twitter_client');
+//        $definition->replaceArgument(0, $config['twitter']['client_id']);
+//        $definition->replaceArgument(1, $config['twitter']['client_secret']);
     }
 }

@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace PaneeDesign\ApiErrorBundle\EventListener;
 
 use PaneeDesign\ApiErrorBundle\Discrimination\DiscriminationStrategyInterface;
+use PaneeDesign\ApiErrorBundle\ResponseBuilder\ResponseBuilderInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
 final class ApiExceptionListener
@@ -20,32 +21,30 @@ final class ApiExceptionListener
     private $discriminator;
 
     /**
+     * @var ResponseBuilderInterface
+     */
+    private $responseBuilder;
+
+    /**
      * ApiExceptionListener constructor.
      *
      * @param DiscriminationStrategyInterface $discriminator
+     * @param ResponseBuilderInterface $responseBuilder
      */
-    public function __construct(DiscriminationStrategyInterface $discriminator)
-    {
+    public function __construct(
+        DiscriminationStrategyInterface $discriminator,
+        ResponseBuilderInterface $responseBuilder
+    ) {
         $this->discriminator = $discriminator;
+        $this->responseBuilder = $responseBuilder;
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         if (!$this->discriminator->inApiContext($event->getRequest())) {
-            return;
+            return null;
         }
 
-        // TODO: view handling
-
-//        $response = $this->viewHandler->handle(
-//            View::create(
-//                $this->makeRepresentation($exception),
-//                $this->determineStatusCode($exception),
-//                ['Content-Type' => 'application/problem+json']
-//            ),
-//            $event->getRequest()
-//        );
-//
-//        $event->setResponse($response);
+        return $this->responseBuilder->build($event->getException());
     }
 }
