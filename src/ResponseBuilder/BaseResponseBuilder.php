@@ -85,7 +85,7 @@ final class BaseResponseBuilder implements ResponseBuilderInterface
             unset($error['params']);
         }
 
-        if ('dev' === $this->debug) {
+        if ($this->debug) {
             $error['exception'] = FlattenException::create($exception);
         }
 

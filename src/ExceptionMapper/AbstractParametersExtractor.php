@@ -23,9 +23,9 @@ abstract class AbstractParametersExtractor
 
     public function processException(\Exception $exception): ?array
     {
-        $subscribedTo = $this->subscribe();
-        if (array_key_exists($fqcn = get_class($exception), $subscribedTo)) {
-            $method = $subscribedTo[$fqcn];
+        $handledExceptions = $this->handledExceptions();
+        if (array_key_exists($fqcn = get_class($exception), $handledExceptions)) {
+            $method = $handledExceptions[$fqcn];
             return $this->$method($exception);
         }
 
@@ -36,5 +36,5 @@ abstract class AbstractParametersExtractor
         return $this->successor->processException($exception);
     }
 
-    abstract protected function subscribe(): array;
+    abstract protected function handledExceptions(): array;
 }

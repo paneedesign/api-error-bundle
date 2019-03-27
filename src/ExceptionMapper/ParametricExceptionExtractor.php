@@ -18,7 +18,7 @@ final class ParametricExceptionExtractor extends AbstractParametersExtractor
         return $exception->getParameters();
     }
 
-    protected function subscribe(): array
+    protected function handledExceptions(): array
     {
         return [
             ParametricExceptionInterface::class => 'handleParametricExceptionInterface'

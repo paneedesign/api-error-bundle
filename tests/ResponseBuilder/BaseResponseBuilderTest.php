@@ -95,6 +95,7 @@ class BaseResponseBuilderTest extends TestCase
         $decodedContent = json_decode($response->getContent(), true);
 
         self::assertArrayHasKey('params', $decodedContent);
+        self::assertArrayHasKey('exception', $decodedContent);
         self::assertCount(2, $decodedContent['params']);
         self::assertArrayHasKey('ONE', $decodedContent['params']);
         self::assertArrayHasKey('TWO', $decodedContent['params']);
