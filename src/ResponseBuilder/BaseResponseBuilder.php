@@ -86,7 +86,7 @@ final class BaseResponseBuilder implements ResponseBuilderInterface
         }
 
         if ($this->debug) {
-            $error['exception'] = FlattenException::create($exception);
+            $error['exception'] = FlattenException::create($exception)->toArray();
         }
 
         return $error;

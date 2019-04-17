@@ -1,7 +1,5 @@
 parameters:
   ped_api_error.discrimination_strategy.base.api_base_path: /api
-  ped_api_error.fqcn_map: []
-  ped_api_error.error_details_map: []
 
 services:
   _defaults:
@@ -21,17 +19,15 @@ services:
     class: PED\ApiErrorBundle\ResponseBuilder\BaseResponseBuilder
     arguments:
       - '%kernel.debug%'
-      - '@ped_api_error.exception_mapper.fqcn_mapping_strategy'
-      - '@ped_api_error.exception_mapper.parametric_exception_extractor'
-      - '@ped_api_error.exception_mapper.base_error_details_mapper'
+      - '@ped_api_error.exception_mapper.mapping_strategy'
+      - '@ped_api_error.exception_mapper.parameters_extractor'
+      - '@ped_api_error.exception_mapper.error_details_mapper'
 
-  ped_api_error.exception_mapper.fqcn_mapping_strategy:
+  ped_api_error.exception_mapper.mapping_strategy:
     class: PED\ApiErrorBundle\ExceptionMapper\FqcnMappingStrategy
-    arguments: ['%ped_api_error.fqcn_map%']
 
-  ped_api_error.exception_mapper.parametric_exception_extractor:
+  ped_api_error.exception_mapper.parameters_extractor:
     class: PED\ApiErrorBundle\ExceptionMapper\ParametricExceptionExtractor
 
-  ped_api_error.exception_mapper.base_error_details_mapper:
+  ped_api_error.exception_mapper.error_details_mapper:
     class: PED\ApiErrorBundle\ExceptionMapper\BaseErrorDetailsMapper
-    arguments: ['%ped_api_error.error_details_map%']

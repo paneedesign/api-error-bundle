@@ -6,6 +6,12 @@ framework:
     session:
         storage_id: session.storage.mock_file
 
-ped_api_error: ~
-
+ped_api_error:
+    mapping:
+        fqcn:
+            Symfony\Component\HttpKernel\Exception\NotFoundHttpException: NOT_FOUND
+        errors:
+            NOT_FOUND:
+                title: Not found
+                statusCode: 404
 services: ~

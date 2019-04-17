@@ -18,5 +18,13 @@ final class ApiErrorTest extends TestCase
 
         self::assertFalse($response->isSuccessful());
         self::assertJson($response->getContent());
+
+        $decoded = json_decode($response->getContent(), true);
+
+        self::assertArrayHasKey('type', $decoded);
+        self::assertEquals('NOT_FOUND', $decoded['type']);
+        self::assertArrayHasKey('title', $decoded);
+        self::assertEquals('Not found', $decoded['title']);
+        self::assertEquals(404, $response->getStatusCode());
     }
 }

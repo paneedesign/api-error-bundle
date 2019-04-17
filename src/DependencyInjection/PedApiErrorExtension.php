@@ -26,5 +26,11 @@ final class PedApiErrorExtension extends ConfigurableExtension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config/'));
         $loader->load('services.yml');
+
+        $definition = $container->getDefinition('ped_api_error.exception_mapper.mapping_strategy');
+        $definition->setArgument(0, $mergedConfig['mapping']['fqcn']);
+
+        $definition = $container->getDefinition('ped_api_error.exception_mapper.error_details_mapper');
+        $definition->setArgument(0, $mergedConfig['mapping']['errors']);
     }
 }

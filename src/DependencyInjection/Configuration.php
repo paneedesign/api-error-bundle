@@ -17,20 +17,39 @@ final class Configuration implements ConfigurationInterface
     /**
      * Generates the configuration tree builder.
      *
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder The tree builder
+     * @return TreeBuilder The tree builder
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('ped_api_error');
+        $treeBuilder = new TreeBuilder($name = 'ped_api_error');
 
-        $treeBuilder->getRootNode()
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root($name);
+        }
+
+
+        $rootNode
             ->children()
-                ->arrayNode('twitter')
+                ->arrayNode('mapping')
                     ->children()
-                        ->integerNode('client_id')->end()
-                        ->scalarNode('client_secret')->end()
+                        ->arrayNode('fqcn')
+                            ->useAttributeAsKey('class')
+                            ->prototype('scalar')->end()
+                        ->end()
+                        ->arrayNode('errors')
+                            ->useAttributeAsKey('name')
+                            ->arrayPrototype()
+                                ->children()
+                                    ->scalarNode('title')->isRequired()->cannotBeEmpty()->end()
+                                    ->scalarNode('statusCode')->defaultValue(500)->end()
+                                ->end()
+                            ->end()
+                        ->end()
                     ->end()
-                ->end() // twitter
+                ->end() // mapping
             ->end()
         ;
 
