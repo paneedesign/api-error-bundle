@@ -1,5 +1,5 @@
 {
-    "name": "paneedesign/api-error-bundle",
+    "name": "ped/api-error-bundle",
     "description": "A bundle that provides tools for easy and consistent API error handling",
     "type": "symfony-bundle",
     "license": "proprietary",
