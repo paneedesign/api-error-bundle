@@ -7,10 +7,10 @@ declare(strict_types=1);
  * Time: 12.38
  */
 
-namespace PaneeDesign\ApiErrorBundle\EventListener;
+namespace PED\ApiErrorBundle\EventListener;
 
-use PaneeDesign\ApiErrorBundle\Discrimination\DiscriminationStrategyInterface;
-use PaneeDesign\ApiErrorBundle\ResponseBuilder\ResponseBuilderInterface;
+use PED\ApiErrorBundle\Discrimination\DiscriminationStrategyInterface;
+use PED\ApiErrorBundle\ResponseBuilder\ResponseBuilderInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
 final class ApiExceptionListener
@@ -45,6 +45,8 @@ final class ApiExceptionListener
             return null;
         }
 
-        return $this->responseBuilder->build($event->getException());
+        $response = $this->responseBuilder->build($event->getException());
+
+        $event->setResponse($response);
     }
 }

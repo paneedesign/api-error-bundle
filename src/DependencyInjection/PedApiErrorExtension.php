@@ -7,33 +7,24 @@ declare(strict_types=1);
  * Time: 12.42
  */
 
-namespace PaneeDesign\ApiErrorBundle\DependencyInjection;
+namespace PED\ApiErrorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
-final class PedApiErrorExtension extends Extension
+final class PedApiErrorExtension extends ConfigurableExtension
 {
     /**
-     * Loads a specific configuration.
-     *
-     * @param array $configs
+     * @param array $mergedConfig
      * @param ContainerBuilder $container
      *
      * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $container)
+    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config/services'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config/'));
         $loader->load('services.yml');
-
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-
-//        $definition = $container->getDefinition('acme.social.twitter_client');
-//        $definition->replaceArgument(0, $config['twitter']['client_id']);
-//        $definition->replaceArgument(1, $config['twitter']['client_secret']);
     }
 }

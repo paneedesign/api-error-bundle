@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 13.05
  */
 
-namespace PaneeDesign\ApiErrorBundle\DependencyInjection;
+namespace PED\ApiErrorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

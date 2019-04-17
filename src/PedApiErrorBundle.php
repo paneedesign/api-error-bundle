@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 12.49
  */
 
-namespace PaneeDesign\ApiErrorBundle;
+namespace PED\ApiErrorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

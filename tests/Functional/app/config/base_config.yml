@@ -6,4 +6,6 @@ framework:
     session:
         storage_id: session.storage.mock_file
 
+ped_api_error: ~
+
 services: ~

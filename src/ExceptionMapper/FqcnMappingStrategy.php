@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 13.34
  */
 
-namespace PaneeDesign\ApiErrorBundle\ExceptionMapper;
+namespace PED\ApiErrorBundle\ExceptionMapper;
 
 final class FqcnMappingStrategy implements MappingStrategyInterface
 {

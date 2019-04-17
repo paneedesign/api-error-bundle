@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 12.13
  */
 
-namespace PaneeDesign\ApiErrorBundle\ExceptionMapper;
+namespace PED\ApiErrorBundle\ExceptionMapper;
 
 interface ErrorDetailsMapperInterface
 {

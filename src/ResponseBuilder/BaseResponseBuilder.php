@@ -7,11 +7,11 @@ declare(strict_types=1);
  * Time: 17.35
  */
 
-namespace PaneeDesign\ApiErrorBundle\ResponseBuilder;
+namespace PED\ApiErrorBundle\ResponseBuilder;
 
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\ErrorDetailsMapperInterface;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\AbstractParametersExtractor;
+use PED\ApiErrorBundle\ExceptionMapper\ErrorDetailsMapperInterface;
+use PED\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
+use PED\ApiErrorBundle\ExceptionMapper\AbstractParametersExtractor;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

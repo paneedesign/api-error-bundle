@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 13.15
  */
 
-namespace PaneeDesign\ApiErrorBundle\Discrimination;
+namespace PED\ApiErrorBundle\Discrimination;
 
 use Symfony\Component\HttpFoundation\Request;
 

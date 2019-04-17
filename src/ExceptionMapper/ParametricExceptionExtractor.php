@@ -7,9 +7,9 @@ declare(strict_types=1);
  * Time: 14.58
  */
 
-namespace PaneeDesign\ApiErrorBundle\ExceptionMapper;
+namespace PED\ApiErrorBundle\ExceptionMapper;
 
-use PaneeDesign\ApiErrorBundle\Exception\ParametricExceptionInterface;
+use PED\ApiErrorBundle\Exception\ParametricExceptionInterface;
 
 final class ParametricExceptionExtractor extends AbstractParametersExtractor
 {

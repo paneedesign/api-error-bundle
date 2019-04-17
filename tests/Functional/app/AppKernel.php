@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PaneeDesign\ApiErrorBundle\Tests\Functional;
+namespace PED\ApiErrorBundle\Tests\Functional;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -22,7 +22,7 @@ final class AppKernel extends Kernel
     {
         return [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \PaneeDesign\ApiErrorBundle\PedApiErrorBundle()
+            new \PED\ApiErrorBundle\PedApiErrorBundle()
         ];
     }
 

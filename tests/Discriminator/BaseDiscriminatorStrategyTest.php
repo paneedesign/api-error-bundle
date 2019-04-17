@@ -7,9 +7,9 @@ declare(strict_types=1);
  * Time: 13.18
  */
 
-namespace PaneeDesign\ApiErrorBundle\Tests\Discriminator;
+namespace PED\ApiErrorBundle\Tests\Discriminator;
 
-use PaneeDesign\ApiErrorBundle\Discrimination\BaseDiscriminationStrategy;
+use PED\ApiErrorBundle\Discrimination\BaseDiscriminationStrategy;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 

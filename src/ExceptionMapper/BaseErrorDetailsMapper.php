@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 12.54
  */
 
-namespace PaneeDesign\ApiErrorBundle\ExceptionMapper;
+namespace PED\ApiErrorBundle\ExceptionMapper;
 
 use Symfony\Component\HttpFoundation\Response;
 

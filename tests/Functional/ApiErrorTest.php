@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PaneeDesign\ApiErrorBundle\Tests\Functional;
+namespace PED\ApiErrorBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 
@@ -13,8 +13,10 @@ final class ApiErrorTest extends TestCase
         $client = static::createClient();
 
         $client->request('GET', '/api/inexistent');
+
         $response = $client->getResponse();
 
+        self::assertFalse($response->isSuccessful());
         self::assertJson($response->getContent());
     }
 }

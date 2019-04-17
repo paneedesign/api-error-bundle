@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 17.32
  */
 
-namespace PaneeDesign\ApiErrorBundle\ResponseBuilder;
+namespace PED\ApiErrorBundle\ResponseBuilder;
 
 use Symfony\Component\HttpFoundation\Response;
 

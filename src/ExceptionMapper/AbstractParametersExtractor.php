@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 14.57
  */
 
-namespace PaneeDesign\ApiErrorBundle\ExceptionMapper;
+namespace PED\ApiErrorBundle\ExceptionMapper;
 
 abstract class AbstractParametersExtractor
 {

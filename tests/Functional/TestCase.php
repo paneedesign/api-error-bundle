@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PaneeDesign\ApiErrorBundle\Tests\Functional;
+namespace PED\ApiErrorBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Filesystem\Filesystem;

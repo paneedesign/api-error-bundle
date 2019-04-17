@@ -7,10 +7,10 @@ declare(strict_types=1);
  * Time: 14.38
  */
 
-namespace PaneeDesign\ApiErrorBundle\Tests\ExceptionMapper;
+namespace PED\ApiErrorBundle\Tests\ExceptionMapper;
 
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\FqcnMappingStrategy;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
+use PED\ApiErrorBundle\ExceptionMapper\FqcnMappingStrategy;
+use PED\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
 use PHPUnit\Framework\TestCase;
 
 class FqcnMappingStrategyTest extends TestCase

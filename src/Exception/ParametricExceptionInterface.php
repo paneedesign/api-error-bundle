@@ -7,7 +7,7 @@ declare(strict_types=1);
  * Time: 12.16
  */
 
-namespace PaneeDesign\ApiErrorBundle\Exception;
+namespace PED\ApiErrorBundle\Exception;
 
 interface ParametricExceptionInterface
 {

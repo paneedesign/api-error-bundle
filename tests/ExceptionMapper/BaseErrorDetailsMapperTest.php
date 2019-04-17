@@ -7,10 +7,10 @@ declare(strict_types=1);
  * Time: 12.56
  */
 
-namespace PaneeDesign\ApiErrorBundle\Tests\ExceptionMapper;
+namespace PED\ApiErrorBundle\Tests\ExceptionMapper;
 
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\BaseErrorDetailsMapper;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
+use PED\ApiErrorBundle\ExceptionMapper\BaseErrorDetailsMapper;
+use PED\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
 use PHPUnit\Framework\TestCase;
 
 class BaseErrorDetailsMapperTest extends TestCase

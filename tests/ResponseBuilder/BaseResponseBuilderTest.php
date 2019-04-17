@@ -7,12 +7,12 @@ declare(strict_types=1);
  * Time: 12.06
  */
 
-namespace PaneeDesign\ApiErrorBundle\Tests\ResponseBuilder;
+namespace PED\ApiErrorBundle\Tests\ResponseBuilder;
 
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\AbstractParametersExtractor;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\ErrorDetailsMapperInterface;
-use PaneeDesign\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
-use PaneeDesign\ApiErrorBundle\ResponseBuilder\BaseResponseBuilder;
+use PED\ApiErrorBundle\ExceptionMapper\AbstractParametersExtractor;
+use PED\ApiErrorBundle\ExceptionMapper\ErrorDetailsMapperInterface;
+use PED\ApiErrorBundle\ExceptionMapper\MappingStrategyInterface;
+use PED\ApiErrorBundle\ResponseBuilder\BaseResponseBuilder;
 use PHPUnit\Framework\TestCase;
 
 class BaseResponseBuilderTest extends TestCase

@@ -11,12 +11,12 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "PaneeDesign\\ApiErrorBundle\\": "src/"
+            "PED\\ApiErrorBundle\\": "src/"
         }
     },
     "autoload-dev" : {
         "psr-4" : {
-            "PaneeDesign\\ApiErrorBundle\\Tests\\": "tests/"
+            "PED\\ApiErrorBundle\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "beta",

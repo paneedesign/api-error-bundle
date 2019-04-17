@@ -7,9 +7,9 @@ declare(strict_types=1);
  * Time: 12.31
  */
 
-namespace PaneeDesign\ApiErrorBundle\Tests;
+namespace PED\ApiErrorBundle\Tests;
 
-use PaneeDesign\ApiErrorBundle\PedApiErrorBundle;
+use PED\ApiErrorBundle\PedApiErrorBundle;
 use PHPUnit\Framework\TestCase;
 
 class PedApiErrorBundleTest extends TestCase
