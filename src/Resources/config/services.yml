@@ -20,7 +20,7 @@ services:
   ped_api_error.response_builder.base:
     class: PED\ApiErrorBundle\ResponseBuilder\BaseResponseBuilder
     arguments:
-      - 'false' # TODO: bind with app
+      - '%kernel.debug%'
       - '@ped_api_error.exception_mapper.fqcn_mapping_strategy'
       - '@ped_api_error.exception_mapper.parametric_exception_extractor'
       - '@ped_api_error.exception_mapper.base_error_details_mapper'
