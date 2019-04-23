@@ -35,7 +35,7 @@ class BaseResponseBuilderTest extends TestCase
     protected function setUp(): void
     {
         $this->mappingStrategy = self::createConfiguredMock(MappingStrategyInterface::class, [
-            'map' => 'A_BAD_ERROR'
+            'type' => 'A_BAD_ERROR'
         ]);
 
         $this->parametersExtractor = self::createConfiguredMock(AbstractParametersExtractor::class, [

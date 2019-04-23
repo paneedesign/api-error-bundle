@@ -19,7 +19,9 @@ class FqcnMappingStrategyTest extends TestCase
     public function testMap()
     {
         $mappingStrategy = new FqcnMappingStrategy([
-            \InvalidArgumentException::class => 'INVALID_ARGUMENT'
+            \InvalidArgumentException::class => [
+                'type' => 'INVALID_ARGUMENT'
+            ]
         ]);
 
         self::assertEquals(
