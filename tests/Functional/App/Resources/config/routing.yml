@@ -1,0 +1,3 @@
+test_invalid_argument_exception:
+  path: /api/invalid-argument-exception
+  controller: PED\ApiErrorBundle\Tests\Functional\App\TestBundle\Controller\InvalidArgumentController

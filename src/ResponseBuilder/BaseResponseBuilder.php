@@ -62,10 +62,11 @@ final class BaseResponseBuilder implements ResponseBuilderInterface
 
     public function build(\Exception $exception): Response
     {
-        $type = $this->mapper->map($exception);
+        $type = $this->mapper->type($exception);
+        $forwardMessage = $this->mapper->forwardMessage($exception);
 
         return new JsonResponse(
-            $this->buildContent($exception, $type),
+            $this->buildContent($exception, $type, $forwardMessage),
             $this->errorDetails->statusCode($type),
             [
                 'Content-Type' => 'application/problem+json'
@@ -73,13 +74,17 @@ final class BaseResponseBuilder implements ResponseBuilderInterface
         );
     }
 
-    private function buildContent(\Exception $exception, string $type): array
+    private function buildContent(\Exception $exception, string $type, bool $forwardMessage = false): array
     {
         $error = [
-            'type'   => $type,
-            'title'  => $this->errorDetails->title($type),
-            'params' => $this->parameterExtractor->processException($exception),
+            'type'      => $type,
+            'title'     => $this->errorDetails->title($type),
+            'params'    => $this->parameterExtractor->processException($exception),
         ];
+
+        if ($forwardMessage) {
+            $error['detail'] = $exception->getMessage();
+        }
 
         if (empty($error['params'])) {
             unset($error['params']);

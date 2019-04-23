@@ -1,7 +1,7 @@
 framework:
     secret: test
     router:
-        resource: '%kernel.root_dir%/config/routing.yml'
+        resource: '%kernel.root_dir%/Resources/config/routing.yml'
     test: ~
     session:
         storage_id: session.storage.mock_file
@@ -10,8 +10,14 @@ ped_api_error:
     mapping:
         fqcn:
             Symfony\Component\HttpKernel\Exception\NotFoundHttpException: NOT_FOUND
+            InvalidArgumentException:
+                type: BAD_REQUEST
+                forwardMessage: true
         errors:
             NOT_FOUND:
                 title: Not found
                 statusCode: 404
+            BAD_REQUEST:
+                title: Bad request
+                statusCode: 400
 services: ~

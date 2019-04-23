@@ -24,12 +24,12 @@ class FqcnMappingStrategyTest extends TestCase
 
         self::assertEquals(
             'INVALID_ARGUMENT',
-            $mappingStrategy->map(new \InvalidArgumentException('dasdsad'))
+            $mappingStrategy->type(new \InvalidArgumentException('dasdsad'))
         );
 
         self::assertEquals(
             MappingStrategyInterface::UNKNOWN_ERROR,
-            $mappingStrategy->map(new \Exception('dasdsad'))
+            $mappingStrategy->type(new \Exception('dasdsad'))
         );
     }
 }

@@ -37,7 +37,19 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->arrayNode('fqcn')
                             ->useAttributeAsKey('class')
-                            ->prototype('scalar')->end()
+                            ->arrayPrototype()
+                                ->beforeNormalization()
+                                ->ifString()->then(function ($v) {
+                                    return [
+                                        'type' => $v
+                                    ];
+                                })
+                                ->end()
+                                ->children()
+                                    ->scalarNode('type')->isRequired()->cannotBeEmpty()->end()
+                                    ->booleanNode('forwardMessage')->defaultValue(false)->end()
+                                ->end()
+                            ->end()
                         ->end()
                         ->arrayNode('errors')
                             ->useAttributeAsKey('name')

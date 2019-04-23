@@ -13,5 +13,12 @@ interface MappingStrategyInterface
 {
     public const UNKNOWN_ERROR = 'UNKNOWN_ERROR';
 
-    public function map(\Exception $exception): string;
+    /**
+     * @param \Exception $exception
+     *
+     * @return string Error type
+     */
+    public function type(\Exception $exception): string;
+
+    public function forwardMessage(\Exception $exception): bool;
 }

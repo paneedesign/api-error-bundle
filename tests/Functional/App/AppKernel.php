@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PED\ApiErrorBundle\Tests\Functional;
+namespace PED\ApiErrorBundle\Tests\Functional\App;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -22,7 +22,8 @@ final class AppKernel extends Kernel
     {
         return [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \PED\ApiErrorBundle\PedApiErrorBundle()
+            new \PED\ApiErrorBundle\PedApiErrorBundle(),
+            new \PED\ApiErrorBundle\Tests\Functional\App\TestBundle\TestBundle(),
         ];
     }
 
@@ -48,11 +49,13 @@ final class AppKernel extends Kernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__ . '/config/base_config.yml');
+        $loader->load(__DIR__ . '/Resources/config/base_config.yml');
 
-        if ($this->testCase && file_exists($path = __DIR__ . '/config/' . $this->testCase . '/config.yml')) {
+        if ($this->testCase && file_exists($path = __DIR__ . '/Resources/config/' . $this->testCase . '/config.yml')) {
             $loader->load($path);
             return;
         }
     }
+
+
 }

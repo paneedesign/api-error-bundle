@@ -26,14 +26,25 @@ final class FqcnMappingStrategy implements MappingStrategyInterface
         $this->map = $map;
     }
 
-    public function map(\Exception $exception): string
+    public function type(\Exception $exception): string
     {
-        foreach ($this->map as $fqcn => $type) {
+        foreach ($this->map as $fqcn => $config) {
             if ($fqcn === get_class($exception)) {
-                return $type;
+                return $config['type'];
             }
         }
 
         return static::UNKNOWN_ERROR;
+    }
+
+    public function forwardMessage(\Exception $exception): bool
+    {
+        foreach ($this->map as $fqcn => $config) {
+            if ($fqcn === get_class($exception)) {
+                return $config['forwardMessage'];
+            }
+        }
+
+        return false;
     }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PED\ApiErrorBundle\Tests\Functional;
 
+use PED\ApiErrorBundle\Tests\Functional\App\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -10,8 +11,6 @@ abstract class TestCase extends WebTestCase
 {
     protected static function createKernel(array $options = [])
     {
-        require_once __DIR__.'/app/AppKernel.php';
-
         return new AppKernel(
             'test',
             true,
