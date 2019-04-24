@@ -1,17 +1,34 @@
 # API Error Bundle
 
 This bundle provides various tools to handle errors in a consistent way in your RESTful APIs based on Symfony.
-This solution is inspired by the [RFC 7807](https://tools.ietf.org/html/rfc7807.html) but is fully customizable 
+
+## Why should I use it?
+Because you are smart and you don't want to reinvent the wheel. This bundle provides you a framework to build your 
+delightful error messages in a structured way. You could accomplish the same result without this bundle but
+you should write some boilerplate code that this bundle is already includes. Don't waste your time!
+
+## Background 
+
+A good error response consists of three basic criteria in order to be truly helpful:
+1. An HTTP Status Code, so that the source and realm of the problem can be ascertained with ease.
+2. An Internal Reference ID for documentation-specific notation of errors.
+3. Human readable messages that summarize the context, cause, and general solution for the error at hand.
+
+The [RFC 7807](https://tools.ietf.org/html/rfc7807.html) aims to define a standard way to carry machine-
+readable details of errors in a HTTP response to avoid the need to
+define new error response formats for HTTP APIs.
+
+This solution, inspired by the [RFC 7807](https://tools.ietf.org/html/rfc7807.html), is fully customizable 
 and extensible. I could say you can use this bundle in every API project to render your error messages in the format 
 you like.
- 	
+
 ## Installation
 Add the following dependency in the require section of your composer.json:
-```json
+```
 "ped/api-error-bundle": "dev-master"
 ```
 Add the repository as well in the repositories section of the composer.json:
-```json
+```
 "repositories": [
 	{
   		"type": "vcs",
@@ -20,7 +37,7 @@ Add the repository as well in the repositories section of the composer.json:
 ],
 ```
 Enable the bundle by adding the following line in the ```bundles.php```:
-```php
+```
 <?php
 
 return [
@@ -104,7 +121,7 @@ default behaviour of this bundle. For instance you could render the type as an U
 }
 ```
 Sometime you would also display some details. The bundle offers you a basic way to do it. You can set the 
-```forwardMessage``` to true to tell the bundle that the exception message must be displayed to the client:
+```forwardMessage``` to ```true``` to tell the bundle that the exception message must be displayed to the client:
 ```yaml
 ped_api_error:
   mapping:
@@ -125,3 +142,5 @@ The resulting response will be something like this:
     "detail": "Your current balance is 30, but that costs 50."
 }
 ```
+
+## How it works
