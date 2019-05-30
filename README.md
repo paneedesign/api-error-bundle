@@ -48,6 +48,7 @@ return [
 ```
 
 
+
 Create the config file ```config/packages/ped_api_error.yml``` and add your settings like in the following example:
 ```yaml
 ped_api_error:
